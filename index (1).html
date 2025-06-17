@@ -1,0 +1,490 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魅力广西 - 探索山水与民族文化的天堂</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E7E34',
+                        secondary: '#E63946',
+                        tertiary: '#F4A261',
+                        neutral: '#F1FAEE',
+                        dark: '#1D3557',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.3);}
+            .text-shadow-lg { text-shadow: 0 4px 8px rgba(0,0,0,0.5);}
+            .bg-gradient-guangxi { background: linear-gradient(135deg, #1E7E34 0%, #0F4C81 100%);}
+            .bg-gradient-mountain { background: linear-gradient(to bottom, rgba(30,126,52,0.8) 0%, rgba(29,53,87,0.9) 100%);}
+            .card-hover { transition: all 0.3s ease;}
+            .card-hover:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.15);}
+            .wave { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;}
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-neutral antialiased">
+    <!-- 导航栏 -->
+    <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                        <i class="fa fa-map-marker text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl md:text-2xl font-bold text-primary">魅力广西</span>
+                </div>
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="hover:text-primary transition">首页</a>
+                    <a href="#attractions" class="hover:text-primary transition">景点推荐</a>
+                    <a href="#features" class="hover:text-primary transition">特色体验</a>
+                    <a href="#seasons" class="hover:text-primary transition">季节推荐</a>
+                    <a href="#statistics" class="hover:text-primary transition">旅游数据</a>
+                </nav>
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-dark hover:text-primary focus:outline-none transition">
+                        <i id="menu-icon" class="fa fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 md:hidden bg-white border-t rounded-b-2xl shadow-lg">
+            <a href="#hero" class="block px-4 py-3 hover:bg-neutral transition">首页</a>
+            <a href="#attractions" class="block px-4 py-3 hover:bg-neutral transition">景点推荐</a>
+            <a href="#features" class="block px-4 py-3 hover:bg-neutral transition">特色体验</a>
+            <a href="#seasons" class="block px-4 py-3 hover:bg-neutral transition">季节推荐</a>
+            <a href="#statistics" class="block px-4 py-3 hover:bg-neutral transition">旅游数据</a>
+        </div>
+    </header>
+    
+    <!-- 头图 -->
+    <section id="hero" class="pt-24 pb-16 bg-gradient-guangxi text-white text-center relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="广西山水" class="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none">
+        <!-- SVG波浪装饰 -->
+        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#F1FAEE" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
+        </svg>
+        <div class="relative z-10 px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">探索山水与民族文化的天堂</h1>
+            <p class="text-lg md:text-xl mb-8 text-shadow">广西壮族自治区，山水甲天下，民族风情浓郁，等你来发现！</p>
+            <a href="#attractions" class="inline-block bg-secondary text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-primary transition">立即探索</a>
+        </div>
+    </section>
+    
+    <!-- 景点展示 -->
+    <section id="attractions" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-12 text-primary text-center">广西绝美景点</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 景点卡片1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/57db36a32676c786931b131873eea3d6" alt="桂林山水" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">桂林山水</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">桂林山水甲天下，以其独特的喀斯特地貌闻名于世，漓江两岸的山峰形态万千，如诗如画。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 景点卡片2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/ed0ba7fef5313e839ab0eec22b2fa4b3" alt="德天瀑布" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">德天瀑布</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">德天瀑布是亚洲第一、世界第四大跨国瀑布，磅礴的气势和壮观的景色令人叹为观止。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 景点卡片3 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/9e8fc684859d6dde9e5911668db4bde6" alt="北海银滩" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">北海银滩</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">北海银滩以其细腻的白沙和清澈的海水著称，有"天下第一滩"的美誉，是理想的海滨度假胜地。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 景点卡片4 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/df7f7b5880f82140b742a03e64b82c73" alt="龙脊梯田" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">龙脊梯田</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">龙脊梯田是世界杰出的稻作文化景观，距今已有650多年历史，被誉为"世界梯田之冠"。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 景点卡片5 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/7ab3e4c30f23c6a21683f3e0f9b32aa3" alt="黄姚古镇" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">黄姚古镇</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">黄姚古镇有着近千年历史，是广西保存最为完好的明清建筑群，被誉为"梦境家园"。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 景点卡片6 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://p3-search.byteimg.com/obj/labis/e0609b7d995c0e0506fc0d2c8d5ba098" alt="程阳八寨" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent flex items-end">
+                        <h3 class="text-white text-xl font-bold p-4 text-shadow">程阳八寨</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">程阳八寨由八个侗族村寨组成，是中国侗族文化和风雨桥建筑艺术的杰出代表。</p>
+                    <a href="#" class="text-primary hover:text-secondary transition inline-flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 特色介绍 -->
+    <section id="features" class="container mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <i class="fa fa-tree text-primary text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">自然山水</h3>
+            <p>桂林山水、德天瀑布、漓江风光，尽显大自然的鬼斧神工。</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                <i class="fa fa-users text-secondary text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">多彩民族</h3>
+            <p>壮、瑶、侗等多民族共融，民俗节庆丰富多彩。</p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover shadow-lg flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center mb-4">
+                <i class="fa fa-cutlery text-tertiary text-4xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">美食天堂</h3>
+            <p>螺蛳粉、桂林米粉、烤鱼等地道美食，令人垂涎。</p>
+        </div>
+    </section>
+    
+    <!-- 季节推荐 -->
+    <section id="seasons" class="py-16 bg-gradient-mountain text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">四季风光</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-leaf text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">春季</h3>
+                    <p class="text-center">万物复苏，梯田绿意盎然，是观赏山水的最佳时节。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-sun-o text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">夏季</h3>
+                    <p class="text-center">青山绿水，瀑布气势磅礴，适合避暑和水上活动。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-tree text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">秋季</h3>
+                    <p class="text-center">梯田金黄，秋高气爽，是摄影和徒步的好时机。</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-snowflake-o text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">冬季</h3>
+                    <p class="text-center">温暖宜人，适合体验民族文化和品尝特色美食。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 民族文化 -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-12 text-primary text-center">多彩民族文化</h2>
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="order-2 md:order-1">
+                <h3 class="text-2xl font-bold mb-4 text-primary">壮族三月三</h3>
+                <p class="text-gray-600 mb-4">
+                    壮族三月三是广西最隆重的民族节日之一，已有上千年历史。这一天，壮族人民会举行歌圩、抛绣球、碰彩蛋等传统活动，同时还有丰富多彩的民间艺术表演。
+                </p>
+                <h3 class="text-2xl font-bold mb-4 text-primary">侗族大歌</h3>
+                <p class="text-gray-600 mb-4">
+                    侗族大歌是中国侗族民间多声部、无指挥、无伴奏、自然和声的民间合唱音乐，被誉为"清泉般的音乐"。2009年，侗族大歌被列入人类非物质文化遗产代表作名录。
+                </p>
+                <a href="#" class="inline-block bg-primary text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-primary/90 transition">
+                    了解更多民族文化
+                </a>
+            </div>
+            <div class="order-1 md:order-2">
+                <div class="relative">
+                    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/f7e6b6e5e88e44298940d28305f6b779~tplv-a9rns2rl98-image.image?rk3s=8e244e95&amp;x-expires=1750738813&amp;x-signature=i6TixkT9Ou%2FmC1w9bcVlktgDSZg%3D" alt="广西民族文化" class="w-full h-auto rounded-2xl shadow-xl">
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg">
+                        <p class="text-primary font-bold">超过12个少数民族</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 美食推荐 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-primary text-center">地道广西美食</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/pgc-image/550e4e95eee444c2b018cb29582f4a8f" alt="螺蛳粉" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">螺蛳粉</h3>
+                        <p class="text-gray-600 mb-4">柳州特色美食，以酸、辣、鲜、爽、烫为特色，汤汁浓郁，配菜丰富。</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/labis/cc20a13ff1c744c8b02536e3fde2247c" alt="桂林米粉" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">桂林米粉</h3>
+                        <p class="text-gray-600 mb-4">广西桂林地区历史悠久的传统名吃，以白、嫩、爽、香著称。</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+                    <img src="https://p3-search.byteimg.com/obj/labis/68fed0499b29a902a4beeb798b04ad6d" alt="老友粉" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">老友粉</h3>
+                        <p class="text-gray-600 mb-4">南宁传统风味小吃，以酸笋、豆豉、辣椒等配料炒制，鲜香酸辣。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 数据可视化 -->
+    <section id="statistics" class="container mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold mb-6 text-primary text-center">广西热门景点游客量统计</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+            <canvas id="chart" height="100"></canvas>
+        </div>
+    </section>
+    
+    <!-- 联系我们 -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="grid md:grid-cols-2">
+                <div class="bg-gradient-guangxi p-8 md:p-12 text-white">
+                    <h2 class="text-3xl font-bold mb-6">联系我们</h2>
+                    <p class="mb-8">
+                        如果你对广西旅游有任何疑问或建议，欢迎随时联系我们，我们将竭诚为你提供帮助。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fa fa-map-marker text-xl mr-4"></i>
+                            <span>广西壮族自治区南宁市青秀区民族大道</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-phone text-xl mr-4"></i>
+                            <span>0771-12345678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-envelope text-xl mr-4"></i>
+                            <span>info@gxtourism.com</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                            <i class="fa fa-weixin text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                            <i class="fa fa-weibo text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition">
+                            <i class="fa fa-instagram text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-8 md:p-12">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">发送消息</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 mb-2">消息</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition">
+                            发送消息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 底部 -->
+    <footer class="bg-dark text-white text-center py-6 mt-12 rounded-t-2xl shadow-inner">
+        © 2024 魅力广西 | 探索山水与民族文化的天堂
+    </footer>
+    
+    <script>
+        // 移动端菜单展开/收起动画
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        let open = false;
+        toggle.onclick = function() {
+            open = !open;
+            if(open) {
+                menu.classList.remove('max-h-0');
+                menu.classList.add('max-h-96');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('max-h-0');
+                menu.classList.remove('max-h-96');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            }
+        }
+        
+        // 页面滚动时导航栏样式变化
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+                header.classList.add('bg-white/95');
+                header.classList.remove('bg-white/90');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+                header.classList.remove('bg-white/95');
+                header.classList.add('bg-white/90');
+            }
+        });
+        
+        // Chart.js 示例
+        new Chart(document.getElementById('chart'), {
+            type: 'bar',
+            data: {
+                labels: ['桂林山水', '德天瀑布', '漓江', '北海银滩', '阳朔西街'],
+                datasets: [{
+                    label: '2023年游客量（万人）',
+                    data: [1200, 800, 950, 700, 600],
+                    backgroundColor: ['#1E7E34', '#E63946', '#F4A261', '#0F4C81', '#1D3557']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // 如果是移动端，点击后关闭菜单
+                if (window.innerWidth < 768 && open) {
+                    toggle.click();
+                }
+            });
+        });
+        
+        // 图片懒加载
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll('img');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.classList.add("fade-in");
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(image => {
+                    imageObserver.observe(image);
+                });
+            }
+        });
+    </script>
+
+
+    </body></html>
